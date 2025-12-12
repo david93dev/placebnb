@@ -2,8 +2,10 @@ import Item from "../components/Item";
 
 const Home = () => {
   return (
-    <section>
-      <div className="mx-auto grid max-w-full grid-cols-[repeat(auto-fit,minmax(225px,1fr))] gap-8 p-8 lg:max-w-7x1">
+    <section className="flex items-center justify-center">
+      <div className="mx-auto grid max-w-full grid-cols-[repeat(auto-fit,minmax(225px,1fr))] gap-8 p-8 lg:max-w-7xl">
+        <Item />
+        <Item />
         <Item />
         <Item />
         <Item />
