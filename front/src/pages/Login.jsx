@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <section className="flex items-center">
-      <div className="mx-auto flex flex-col items-center gap-8 max-w-96 w-full px-4 md:px-0">
+      <div className="mx-auto flex flex-col items-center gap-7 max-w-96 w-full px-4 md:px-0">
         
           <h1 className="text-3xl font-bold">Faça seu login</h1>
 

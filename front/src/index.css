@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
-* {
-    font-family: roboto;
-}
-
 @theme {
     --color-primary-400: #38bdf8;
     --color-primary-500: #0ea5e9;
     --color-primary-600: #0284c7;
+
+    --font-placebnb:
+    Airbnb Cereal VF, Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, sans-serif;
 }
