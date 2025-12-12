@@ -1,21 +1,22 @@
+import { Link } from "react-router-dom";
 import logo from "../assets/img/logo.png";
 const Header = () => {
   return (
     <header className="w-full shadow-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-2">
         {/* Logo */}
-        <div className="flex items-center justify-center gap-1">
+        <Link to={"/"} className="flex items-center justify-center gap-1">
           <img className="h-9" src={logo} alt="Logo da placebnb" />
-          <p className="text-primary-400 text-[18px] font-bold">placebnb</p>
-        </div>
+          <p className="text-primary-600 text-[18px] font-bold">placebnb</p>
+        </Link>
 
         {/* Nav */}
         <div className="hidden items-center rounded-full border border-gray-300 px-4 py-2 shadow-sm lg:flex">
-          <p className="border-r border-r-gray-300 pr-4">Qualquer lugar</p>
-          <p className="border-r border-r-gray-300 px-4">Qualquer semana</p>
-          <p className="px-4">Hóspedes</p>
+          <Link to={"/"} className="border-r border-r-gray-300 pr-4">Qualquer lugar</Link>
+          <Link to={"/"} className="border-r border-r-gray-300 px-4">Qualquer semana</Link>
+          <Link to={"/"} className="px-4">Hóspedes</Link>
 
-          <div className="bg-primary-400 rounded-full p-2 text-white">
+          <Link to={"/"} className="bg-primary-600 rounded-full p-2 text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -30,11 +31,11 @@ const Header = () => {
                 d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
               />
             </svg>
-          </div>
+          </Link>
         </div>
 
         {/* Profile  */}
-        <div className="flex items-center gap-2 rounded-full border border-gray-300 px-3 py-2 shadow-sm sm:px-4">
+        <Link to={"login"} className="flex items-center gap-2 rounded-full border border-gray-300 px-3 py-2 shadow-sm sm:px-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -64,7 +65,7 @@ const Header = () => {
           </svg>
 
           <p className="max-w-20 truncate sm:max-w-32">Perfil</p>
-        </div>
+        </Link>
       </div>
     </header>
   );
