@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+* {
+    font-family: roboto;
+}
+
+@theme {
+    --color-primary-400: #0084D1;
+}
