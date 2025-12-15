@@ -1,43 +1,58 @@
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submit disparado", email);
+  };
+
   return (
     <section className="flex items-center">
-      <div className="mx-auto flex flex-col items-center gap-7 max-w-96 w-full px-4 md:px-0">
-        
-          <h1 className="text-3xl font-bold">Faça seu login</h1>
+      <div className="mx-auto flex w-full max-w-96 flex-col items-center gap-7 px-4 md:px-0">
+        <h1 className="text-3xl font-bold">Faça seu login</h1>
 
-          <form action="" className="flex justify-center items-center w-full flex-col gap-4">
+        <form
+          onSubmit={handleSubmit}
+          className="flex w-full flex-col items-center justify-center gap-4"
+        >
           <input
-          id="email" 
-          type="email"
-          name="email"
-          placeholder="Digite seu email"
-          className="w-full border border-gray-300 rounded-full px-4 py-2 active:outline-1 outline-primary-600"/>
-          
-          
-             <input
-          id="password" 
-          type="password"
-          name="password"
-          placeholder="Digite sua senha"
-          className="w-full border border-gray-300 rounded-full px-4 py-2 active:outline-1 outline-primary-600"/>
-          
-          <button className="cursor-pointer bg-primary-600 text-white text-md w-full px-4 py-2 rounded-full hover:bg-primary-400 transition-colors duration-300 hover:scale-101">
-          Login
-          </button> 
+            id="email"
+            type="email"
+            name="email"
+            placeholder="Digite seu email"
+            className="outline-primary-600 w-full rounded-full border border-gray-300 px-4 py-2 active:outline-1"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-          </form>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            placeholder="Digite sua senha"
+            className="outline-primary-600 w-full rounded-full border border-gray-300 px-4 py-2 active:outline-1"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-          <p>
-            Ainda não tem uma conta?  
-            <Link 
-            to={"/"} 
-            className="underline px-1 text-sm text-center font-semibold"
-            >Registre-se aqui!</Link>
-          </p>        
-      
+          <button className="bg-primary-600 text-md hover:bg-primary-400 w-full cursor-pointer rounded-full px-4 py-2 text-white transition-colors duration-300 hover:scale-101">
+            Login
+          </button>
+        </form>
+
+        <p>
+          Ainda não tem uma conta?
+          <Link
+            to={"/"}
+            className="px-1 text-center text-sm font-semibold underline"
+          >
+            Registre-se aqui!
+          </Link>
+        </p>
       </div>
     </section>
   );
