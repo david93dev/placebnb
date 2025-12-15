@@ -47,6 +47,7 @@ const Login = ({user, setUser}) => {
             className="outline-primary-600 w-full rounded-full border border-gray-300 px-4 py-2 active:outline-1"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
 
           <input
@@ -58,6 +59,7 @@ const Login = ({user, setUser}) => {
             className="outline-primary-600 w-full rounded-full border border-gray-300 px-4 py-2 active:outline-1"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
 
           <button className="bg-primary-600 mt-2 text-md hover:bg-primary-400 w-full cursor-pointer rounded-full px-4 py-2 text-white transition-colors duration-300 hover:scale-101">

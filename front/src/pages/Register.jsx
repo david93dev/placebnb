@@ -8,25 +8,26 @@ const Register = ({ setUser }) => {
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
 
-  //   const handleSubmit = async (e) => {
-  //     e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  //     if(email && password) {
-  //       try {
-  //         const { data: userDoc } = await axios.post("/users/login", {
-  //           email,
-  //           password,
-  //         });
+    if (email && password && name) {
+      try {
+        const { data: userDoc } = await axios.post("/users", {
+          name,
+          email,
+          password,
+        });
 
-  //         setUser(userDoc)
-  //         setRedirect(true)
-  //       } catch (error) {
-  //         alert(`Erro ao logar! ${error.response.data}`)
-  //       }
-  //     } else {
-  //       alert("Você precisa preencher o email e a senha!")
-  //     }
-  //   };
+        setUser(userDoc);
+        setRedirect(true);
+      } catch (error) {
+        alert(`Erro ao cadastrar um usuário! ${error.response.data}`);
+      }
+    } else {
+      alert("Você precisa preencher o nome, email e a senha!");
+    }
+  };
 
   if (redirect) return <Navigate to={"/"} />;
 
@@ -36,7 +37,7 @@ const Register = ({ setUser }) => {
         <h1 className="text-3xl font-bold">Faça seu cadastro</h1>
 
         <form
-          //onSubmit={handleSubmit}
+          onSubmit={handleSubmit}
           className="flex w-full flex-col items-center justify-center gap-2"
         >
           <input
@@ -48,6 +49,7 @@ const Register = ({ setUser }) => {
             className="outline-primary-600 w-full rounded-full border border-gray-300 px-4 py-2 active:outline-1"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
           />
 
           <input
@@ -59,6 +61,7 @@ const Register = ({ setUser }) => {
             className="outline-primary-600 w-full rounded-full border border-gray-300 px-4 py-2 active:outline-1"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
 
           <input
@@ -70,9 +73,10 @@ const Register = ({ setUser }) => {
             className="outline-primary-600 w-full rounded-full border border-gray-300 px-4 py-2 active:outline-1"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
 
-          <button className="bg-primary-600 mt-2 text-md hover:bg-primary-400 w-full cursor-pointer rounded-full px-4 py-2 text-white transition-colors duration-300 hover:scale-101">
+          <button className="bg-primary-600 text-md hover:bg-primary-400 mt-2 w-full cursor-pointer rounded-full px-4 py-2 text-white transition-colors duration-300 hover:scale-101">
             registrar
           </button>
         </form>
