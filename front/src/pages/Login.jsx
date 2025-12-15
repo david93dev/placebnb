@@ -1,15 +1,33 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 
-const Login = () => {
+const Login = ({user, setUser}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    a
+
+    if(email && password) {
+      try {
+        const { data: userDoc } = await axios.post("/users/login", {
+          email,
+          password,
+        });
+
+        setUser(userDoc)
+        setRedirect(true)
+      } catch (error) {
+        alert(`Erro ao logar! ${error.response.data}`)
+      }
+    } else {
+      alert("Você precisa preencher o email e a senha!")
+    }
   };
+
+  if (redirect || user ) return <Navigate to={'/'} />
 
   return (
     <section className="flex items-center">
@@ -18,12 +36,13 @@ const Login = () => {
 
         <form
           onSubmit={handleSubmit}
-          className="flex w-full flex-col items-center justify-center gap-4"
+          className="flex w-full flex-col items-center justify-center gap-2"
         >
           <input
             id="email"
             type="email"
             name="email"
+            autoComplete="email"
             placeholder="Digite seu email"
             className="outline-primary-600 w-full rounded-full border border-gray-300 px-4 py-2 active:outline-1"
             value={email}
@@ -34,13 +53,14 @@ const Login = () => {
             id="password"
             type="password"
             name="password"
+            autoComplete="current-password"
             placeholder="Digite sua senha"
             className="outline-primary-600 w-full rounded-full border border-gray-300 px-4 py-2 active:outline-1"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button className="bg-primary-600 text-md hover:bg-primary-400 w-full cursor-pointer rounded-full px-4 py-2 text-white transition-colors duration-300 hover:scale-101">
+          <button className="bg-primary-600 mt-2 text-md hover:bg-primary-400 w-full cursor-pointer rounded-full px-4 py-2 text-white transition-colors duration-300 hover:scale-101">
             Login
           </button>
         </form>
@@ -48,7 +68,7 @@ const Login = () => {
         <p>
           Ainda não tem uma conta?
           <Link
-            to={"/"}
+            to={"/register"}
             className="px-1 text-center text-sm font-semibold underline"
           >
             Registre-se aqui!
