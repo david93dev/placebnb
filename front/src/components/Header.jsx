@@ -35,7 +35,7 @@ const Header = ({user}) => {
         </div>
 
         {/* Profile  */}
-        <Link to={user ? "/account" : "/login"} 
+        <Link to={user ? "/account/profile" : "/login"} 
         className="flex items-center gap-2 rounded-full border border-gray-300 px-3 py-2 shadow-sm sm:px-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
