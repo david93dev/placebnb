@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/img/logo.png";
-const Header = ({user}) => {
+import { useUserContext } from "../contexts/UserContext";
+const Header = () => {
+  const { user } = useUserContext();
+
   return (
     <header className="w-full shadow-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-2">

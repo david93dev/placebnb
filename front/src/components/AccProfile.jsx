@@ -1,14 +1,17 @@
 import axios from "axios";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
+import { UserContext, useUserContext } from "../contexts/UserContext";
 
-const AccProfile = ({ user }) => {
+const AccProfile = () => {
+  const { user, setUser } = useUserContext()
   const [redirect, setRedirect] = useState(false);
 
   const logout = async () => {
     try {
       const { data } = await axios.post("/users/logout");
 
+      setUser(null)
       setRedirect(true);
     } catch (error) {
         alert(JSON.stringify(error))
