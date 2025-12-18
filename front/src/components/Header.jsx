@@ -14,12 +14,12 @@ const Header = () => {
         </Link>
 
         {/* Nav */}
-        <div className="hidden items-center rounded-full border border-gray-300 px-4 py-2 shadow-sm lg:flex">
+        <div className="hidden items-center rounded-full border text-gray-600 font-semibold border-gray-300 px-4 py-2 shadow-sm lg:flex">
           <Link to={"/"} className="border-r border-r-gray-300 pr-4">Qualquer lugar</Link>
           <Link to={"/"} className="border-r border-r-gray-300 px-4">Qualquer semana</Link>
           <Link to={"/"} className="px-4">Hóspedes</Link>
 
-          <Link to={"/"} className="bg-primary-600 rounded-full p-2 text-white">
+          <Link to={"/"} className="bg-primary-500 rounded-full p-2 text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -68,7 +68,7 @@ const Header = () => {
             />
           </svg>
 
-          {user ? <p className="max-w-20 truncate sm:max-w-32">{user.name}</p> : <></>}
+          {user ? <p className="max-w-20 truncate text-gray-500 font-bold sm:max-w-32">{user.name}</p> : <></>}
         </Link>
       </div>
     </header>

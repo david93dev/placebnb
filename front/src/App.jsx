@@ -32,7 +32,7 @@ function App() {
           element={<Register />} />
 
           <Route 
-          path="/account/:subpage?" 
+          path="/account/:subpage/:action?" 
           element={<Account />} />
 
         </Routes>

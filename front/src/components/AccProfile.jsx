@@ -23,7 +23,7 @@ const AccProfile = () => {
   return (
     <div className="flex flex-col items-center gap-4">
       <p>
-        Logado com {user?.name} ({user?.email})
+        Logado com <b>{user?.name}</b> (<b>{user?.email}</b>)
       </p>
 
       <button
